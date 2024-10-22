@@ -1,0 +1,27 @@
+{{define "home"}}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman Web</title>
+</head>
+
+<body>
+    <form action="/home" method="post">
+        <label for="pseudo">Selectionnez votre pseudo</label>
+        <input type="text" name="pseudo">
+        <select name="difficulty">
+            <option>Choisissez votre difficultée</option>
+            <option>Moyen</option>
+            <option>Difficile</option>
+        </select>
+        <button type="submit">valider</button>
+    </form>
+    <p>{{.Difficulty}}</p>
+    <p>{{.Nickname}}</p>
+</body>
+
+</html>
+{{end}}
