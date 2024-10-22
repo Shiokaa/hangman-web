@@ -17,7 +17,8 @@ func TraitementDonnee() {
 		checkNickname, _ := regexp.MatchString("^[a-zA-Z]{1,16}$", r.FormValue("pseudo"))
 
 		if !checkNickname {
-
+			http.Redirect(w, r, "/user/form?message=Pseudo Invalide", http.StatusMovedPermanently)
+			return
 		}
 
 		http.Redirect(w, r, "/game", http.StatusSeeOther)
