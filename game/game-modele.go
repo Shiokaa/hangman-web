@@ -1,5 +1,2 @@
 package game
 
-func GameModele()  {
-	
-}

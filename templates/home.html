@@ -1,22 +1,24 @@
 {{define "home"}}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hangman-web</title>
     <link rel="stylesheet" href="/static/style/home.css">
 </head>
+
 <body>
     <div class="backgroundImage"></div>
     <div class="form-container">
-        <form action="your-server-endpoint" method="POST">
+        <form action="/home/traitement" method="POST">
             <label for="pseudo" class="pseudo">Pseudo:</label>
             <input type="text" id="pseudo" name="pseudo" placeholder="Entrez votre pseudo" required>
 
             <label for="difficulty">Difficulté:</label>
             <select id="difficulty" name="difficulty">
-                <option value="facile">Facile</option>
+                <option>Choisissez votre difficulté</option>
                 <option value="normal">Normal</option>
                 <option value="difficile">Difficile</option>
             </select>
@@ -25,5 +27,6 @@
         </form>
     </div>
 </body>
+
 </html>
 {{end}}

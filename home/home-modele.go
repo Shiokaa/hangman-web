@@ -1,31 +1,28 @@
 package home
 
 import (
-	"net/http"
 	"regexp"
 )
 
 type Home struct {
 	FormDifficulty string
 	Difficulty     int
-	Nickname       string
+	Pseudo         string
 }
 
-func TraitementDonnee() {
-	http.HandleFunc("/home/traitement", func(w http.ResponseWriter, r *http.Request) {
-
-		checkNickname, _ := regexp.MatchString("^[a-zA-Z]{1,16}$", r.FormValue("pseudo"))
-
-		if !checkNickname {
-			http.Redirect(w, r, "/user/form?message=Pseudo Invalide", http.StatusMovedPermanently)
-			return
-		}
-
-		http.Redirect(w, r, "/game", http.StatusSeeOther)
-	})
+func (h *Home) isValidNickname() bool {
+	match, _ := regexp.MatchString("^[a-zA-Z]{1,16}$", h.Pseudo)
+	return match
 }
 
-func (h *Home) SetDifficulty() {
+func (h *Home) isValidDifficulty() bool {
+	if h.FormDifficulty == "normal" || h.FormDifficulty == "difficile" {
+		return true
+	}
+	return false
+}
+
+func (h *Home) setDifficulty() {
 	if h.FormDifficulty == "Difficile" {
 		h.Difficulty = 1
 	}
