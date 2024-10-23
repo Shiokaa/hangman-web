@@ -11,7 +11,10 @@
 <body>
 
     <form action="/game" method="post">
-        <p>test</p>
+        <p>Voici votre pseudo : {{.Pseudo}}</p>
+        <p>Voici la difficulté : {{.Difficulty}}</p>
+        <p>Voici le mot : {{.Word}}</p>
+        <p>Voici le mot caché : {{.HiddenWord}}</p>
         <input type="text" name="user-word">
     </form>
 

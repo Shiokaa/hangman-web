@@ -6,7 +6,6 @@ import (
 
 type Home struct {
 	FormDifficulty string
-	Difficulty     int
 	Pseudo         string
 	CheckPseudo    bool
 }
@@ -21,10 +20,4 @@ func (h *Home) isValidDifficulty() bool {
 		return true
 	}
 	return false
-}
-
-func (h *Home) setDifficulty() {
-	if h.FormDifficulty == "Difficile" {
-		h.Difficulty = 1
-	}
 }
