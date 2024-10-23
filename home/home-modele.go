@@ -8,6 +8,7 @@ type Home struct {
 	FormDifficulty string
 	Difficulty     int
 	Pseudo         string
+	CheckPseudo    bool
 }
 
 func (h *Home) isValidNickname() bool {

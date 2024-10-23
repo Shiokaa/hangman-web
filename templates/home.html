@@ -15,7 +15,9 @@
         <form action="/home/traitement" method="POST">
             <label for="pseudo" class="pseudo">Pseudo:</label>
             <input type="text" id="pseudo" name="pseudo" placeholder="Entrez votre pseudo" required>
-
+            {{if .CheckPseudo}}
+            <p class="check-pseudo">Pseudo Invalide</p>
+            {{end}}
             <label for="difficulty">Difficulté:</label>
             <select id="difficulty" name="difficulty">
                 <option>Choisissez votre difficulté</option>
