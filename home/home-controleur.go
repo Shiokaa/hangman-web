@@ -5,11 +5,6 @@ import (
 	"net/http"
 )
 
-type Check struct {
-	CheckNumbers bool
-	CheckMaxChar bool
-}
-
 func home(w http.ResponseWriter, r *http.Request) {
 	data := Home{FormDifficulty: r.FormValue("difficulty"), Difficulty: 0, Pseudo: r.FormValue("pseudo"), CheckPseudo: false}
 	data.setDifficulty()

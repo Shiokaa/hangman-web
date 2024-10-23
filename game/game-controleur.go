@@ -6,5 +6,6 @@ import (
 )
 
 func game(w http.ResponseWriter, r *http.Request) {
+
 	templates.Templates.ExecuteTemplate(w, "game", nil)
 }
