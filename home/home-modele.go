@@ -1,6 +1,8 @@
 package home
 
 import (
+	"HangmanWeb/random"
+	"math/rand/v2"
 	"regexp"
 )
 
@@ -20,4 +22,43 @@ func (h *Home) isValidDifficulty() bool {
 		return true
 	}
 	return false
+}
+
+func (h *Home) CreateSlice() []rune {
+	var runeSlice []rune
+	n := rand.IntN(len(random.Word) - 1)
+	x := rand.IntN(len(random.Word) - 1)
+
+	for x == n {
+		x = rand.IntN(len(random.Word) - 1)
+	}
+
+	if h.FormDifficulty == "difficile" {
+		for i, char := range random.Word {
+			if i == len(random.Word)-1 {
+				break
+			}
+			if i == n {
+				runeSlice = append(runeSlice, char)
+			} else {
+				runeSlice = append(runeSlice, '_')
+			}
+		}
+	}
+
+	if h.FormDifficulty == "normal" {
+		for i, char := range random.Word {
+			if i == len(random.Word)-1 {
+				break
+			} else if i == n {
+				runeSlice = append(runeSlice, char)
+			} else if i == x {
+				runeSlice = append(runeSlice, char)
+			} else {
+				runeSlice = append(runeSlice, '_')
+			}
+		}
+	}
+
+	return runeSlice
 }

@@ -1,6 +1,7 @@
 package main
 
 import (
+	errors "HangmanWeb/error"
 	"HangmanWeb/game"
 	"HangmanWeb/home"
 	"HangmanWeb/templates"
@@ -15,6 +16,7 @@ func main() {
 
 	home.HomeRouteur()
 	game.GameRouteur()
+	errors.ErrorRouteur()
 
 	http.ListenAndServe("localhost:8080", nil)
 }
