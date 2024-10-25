@@ -5,6 +5,7 @@ import (
 	"HangmanWeb/random"
 	"HangmanWeb/templates"
 	"net/http"
+	"strings"
 )
 
 func game(w http.ResponseWriter, r *http.Request) {
@@ -14,9 +15,7 @@ func game(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := RecupVar{Pseudo: home.Pseudo, Difficulty: home.Difficulty, Word: random.Word, HiddenWord: home.HiddenWord, Counter: 6, UserWord: r.FormValue("word")}
-
-	data.findLetterOrWord()
+	data := RecupVar{Pseudo: home.Pseudo, Difficulty: home.Difficulty, Counter: Counter, Word: random.Word, HiddenWord: home.HiddenWord, UserValue: r.FormValue("user-value"), Win: false, Lose: false, LettersAlreadyFound: strings.Join(LettersAlreadyFound, ", "), WordsAlreadyFound: strings.Join(WordsAlreadyFound, ", ")}
 
 	templates.Templates.ExecuteTemplate(w, "game", data)
 }
@@ -28,7 +27,10 @@ func gameTraitement(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	userword := r.FormValue("user-word")
+	data := RecupVar{Pseudo: home.Pseudo, Difficulty: home.Difficulty, Counter: Counter, Word: random.Word, HiddenWord: home.HiddenWord, UserValue: r.FormValue("user-value"), Win: false, Lose: false, LettersAlreadyFound: strings.Join(LettersAlreadyFound, ", "), WordsAlreadyFound: strings.Join(WordsAlreadyFound, ", ")}
 
-	http.Redirect(w, r, "/game?word="+userword, http.StatusSeeOther)
+	data.findLetterOrWord()
+	data.endGame()
+
+	http.Redirect(w, r, "/game", http.StatusSeeOther)
 }

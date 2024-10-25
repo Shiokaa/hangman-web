@@ -11,9 +11,9 @@
 
 <body>
 
-    <!-- Ajout du header pour le pseudo et la difficulté -->
     <header>
         <p>Pseudo : {{.Pseudo}}</p>
+        <h1>Bienvenue dans le jeu du pendu !</h1>
         <p>Difficulté : {{.Difficulty}}</p>
     </header>
 
@@ -21,9 +21,18 @@
         <p>Voici le mot : {{.Word}}</p>
         <p>Voici le mot caché : {{.HiddenWord}}</p>
         <p>Voici les vies restantes : {{.Counter}}</p>
-        <p>Voici le mot que vous avez entré : {{.UserWord}}</p>
-        <input type="text" name="user-word">
+        <p>Voici le mot que vous avez entré : {{.UserValue}}</p>
+        <p>Voici les mots utilisé : {{.WordsAlreadyFound}}</p>
+        <p>Voici les lettres utilisé : {{.LettersAlreadyFound}}</p>
+        <input type="text" name="user-value" id="user-value" required autofocus>
     </form>
+
+    <style>
+        body {
+            background: no-repeat url("/static/img/fond-n{{.Counter}}.png");
+        }
+    </style>
+    <script src="/static/script/game.js"></script>
 
 </body>
 

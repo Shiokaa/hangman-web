@@ -8,12 +8,14 @@ import (
 type RecupVar struct {
 	Pseudo              string
 	Difficulty          string
+	Counter             int
 	Word                string
 	HiddenWord          string
-	Counter             int
-	UserWord            string
-	LettersAlreadyFound []string
-	WordsAlreadyFound   []string
+	UserValue           string
+	LettersAlreadyFound string
+	WordsAlreadyFound   string
+	Win                 bool
+	Lose                bool
 }
 
 func (r *RecupVar) convertedWord() []rune {
@@ -31,35 +33,48 @@ func (r *RecupVar) convertedWord() []rune {
 	return runeSlice
 }
 
+var Counter int = 6
+var LettersAlreadyFound []string
+var WordsAlreadyFound []string
+
 func (r *RecupVar) findLetterOrWord() {
 	isFind := false
 	hiddenWord := r.convertedWord()
 
-	if len(r.UserWord) > 1 {
-		if strings.EqualFold(strings.TrimSpace(r.UserWord), strings.TrimSpace(r.Word)) {
-			r.HiddenWord = r.UserWord
+	if len(r.UserValue) > 1 {
+		if strings.EqualFold(strings.TrimSpace(r.UserValue), strings.TrimSpace(r.Word)) {
+			r.HiddenWord = r.UserValue
 		} else {
-			r.WordsAlreadyFound = append(r.WordsAlreadyFound, r.UserWord)
-			r.Counter -= 2
+			WordsAlreadyFound = append(WordsAlreadyFound, r.UserValue)
+			Counter -= 2
 		}
-	}
-
-	for iWord, charWord := range r.Word {
-		if strings.EqualFold(string(charWord), r.UserWord) {
-			isFind = true
-			for iHiddenWord := range r.HiddenWord {
-				if iWord == iHiddenWord {
-					hiddenWord[iHiddenWord] = charWord
-					home.HiddenWord = string(hiddenWord)
-					r.HiddenWord = string(hiddenWord)
-					break
+	} else {
+		for iWord, charWord := range r.Word {
+			if strings.EqualFold(string(charWord), r.UserValue) {
+				isFind = true
+				for iHiddenWord := range r.HiddenWord {
+					if iWord == iHiddenWord {
+						hiddenWord[iHiddenWord] = charWord
+						home.HiddenWord = string(hiddenWord)
+						r.HiddenWord = string(hiddenWord)
+						break
+					}
 				}
 			}
 		}
-	}
 
-	if !isFind {
-		r.LettersAlreadyFound = append(r.LettersAlreadyFound, r.UserWord)
-		r.Counter--
+		if !isFind {
+			LettersAlreadyFound = append(LettersAlreadyFound, r.UserValue)
+			Counter--
+		}
+	}
+}
+
+func (r *RecupVar) endGame() {
+	if Counter == 0 {
+		r.Lose = true
+	}
+	if strings.EqualFold(strings.TrimSpace(r.UserValue), strings.TrimSpace(r.Word)) {
+		r.Win = true
 	}
 }
