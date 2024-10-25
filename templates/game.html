@@ -6,17 +6,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hangman Web</title>
+    <link rel="stylesheet" href="/static/style/game.css">
 </head>
 
 <body>
 
-    <form action="/game/traitement" method="post">
-        <p>Voici votre pseudo : {{.Pseudo}}</p>
-        <p>Voici la difficulté : {{.Difficulty}}</p>
+    <!-- Ajout du header pour le pseudo et la difficulté -->
+    <header>
+        <p>Pseudo : {{.Pseudo}}</p>
+        <p>Difficulté : {{.Difficulty}}</p>
+    </header>
+
+    <form action="/game/traitement" method="post" class="game-form">
         <p>Voici le mot : {{.Word}}</p>
         <p>Voici le mot caché : {{.HiddenWord}}</p>
         <p>Voici les vies restantes : {{.Counter}}</p>
-        <p>Voici le mot que vous avez entrez : {{.UserWord}}</p>
+        <p>Voici le mot que vous avez entré : {{.UserWord}}</p>
         <input type="text" name="user-word">
     </form>
 
