@@ -1,6 +1,8 @@
 package game
 
-import "HangmanWeb/random"
+import (
+	"strings"
+)
 
 type RecupVar struct {
 	Pseudo              string
@@ -13,29 +15,12 @@ type RecupVar struct {
 	WordsAlreadyFound   []string
 }
 
-func convertWord() []rune {
-	randomWord := random.Word
-	var runeSlice []rune
-
-	for _, v := range randomWord {
-		if v == 13 {
-			break
-		} else {
-			runeSlice = append(runeSlice, v)
-		}
-	}
-
-	return runeSlice
-}
-
 func (r *RecupVar) FindLetterOrWord() {
-	/* 	isFind := false
-	   	word := convertWord()
-	*/
+	/* isFind := false */
+
 	if len(r.UserWord) > 1 {
-		if r.UserWord == r.Word {
+		if strings.EqualFold(strings.TrimSpace(r.UserWord), strings.TrimSpace(r.Word)) {
 			r.HiddenWord = r.UserWord
-			r.Counter += 1
 		} else {
 			r.WordsAlreadyFound = append(r.WordsAlreadyFound, r.UserWord)
 			r.Counter -= 2
