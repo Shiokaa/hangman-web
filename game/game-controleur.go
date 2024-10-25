@@ -16,7 +16,7 @@ func game(w http.ResponseWriter, r *http.Request) {
 
 	data := RecupVar{Pseudo: home.Pseudo, Difficulty: home.Difficulty, Word: random.Word, HiddenWord: home.HiddenWord, Counter: 6, UserWord: r.FormValue("word")}
 
-	data.FindLetterOrWord()
+	data.findLetterOrWord()
 
 	templates.Templates.ExecuteTemplate(w, "game", data)
 }
