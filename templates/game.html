@@ -17,7 +17,12 @@
         <p>Difficulté : {{.Difficulty}}</p>
         <p>Mot : {{.Word}}</p>
     </header>
- 
+
+    {{if .Win}}
+    <p>Win Test</p>
+    {{else if .Lose}}
+    <p>Lose Test</p>
+    {{else}}
     <form action="/game/traitement" method="post" class="game-form">
         <div class="container">
             <div class="first-child">
@@ -33,10 +38,10 @@
             </div>
         </div>
     </form>
-
+    {{end}}
     <style>
         body {
-            background: no-repeat url("/static/img/fond-n{{.Counter}}.png");
+            background: no-repeat url("/static/img/Fond-n{{.Counter}}.png");
         }
     </style>
 
