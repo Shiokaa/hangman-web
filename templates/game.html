@@ -15,8 +15,9 @@
         <p>Pseudo : {{.Pseudo}}</p>
         <h1>Bienvenue dans le jeu du pendu !</h1>
         <p>Difficulté : {{.Difficulty}}</p>
+        <p>Mot : {{.Word}}</p>
     </header>
-
+ 
     <form action="/game/traitement" method="post" class="game-form">
         <div class="container">
             <div class="first-child">
@@ -26,11 +27,9 @@
             <div class="second-child">
                 <p>Voici les mots utilisé : {{.WordsAlreadyFound}}</p>
                 <p>Voici les lettres utilisé : {{.LettersAlreadyFound}}</p>
-
             </div>
             <div class="third-child">
                 <input type="text" name="user-value" id="user-value" required autofocus>
-
             </div>
         </div>
     </form>
@@ -40,6 +39,7 @@
             background: no-repeat url("/static/img/fond-n{{.Counter}}.png");
         }
     </style>
+
     <script src="/static/script/game.js"></script>
 
 </body>

@@ -46,6 +46,7 @@ func (r *RecupVar) findLetterOrWord() {
 	if len(r.UserValue) > 1 {
 		if strings.EqualFold(strings.TrimSpace(r.UserValue), strings.TrimSpace(r.Word)) {
 			r.HiddenWord = r.UserValue
+			home.HiddenWord = r.UserValue
 		} else {
 			WordsAlreadyFound = append(WordsAlreadyFound, r.UserValue)
 			Counter -= 2
@@ -76,10 +77,9 @@ func (r *RecupVar) findLetterOrWord() {
 func (r *RecupVar) endGame() {
 
 	if Counter == 0 {
-		Lose = true
+		r.Lose = true
 	}
-	if strings.EqualFold(strings.TrimSpace(r.UserValue), strings.TrimSpace(r.Word)) {
-		Win = true
+	if strings.EqualFold(strings.TrimSpace(r.HiddenWord), strings.TrimSpace(r.Word)) {
+		r.Win = true
 	}
-
 }
