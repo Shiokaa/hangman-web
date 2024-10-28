@@ -4,6 +4,7 @@ import (
 	errors "HangmanWeb/error"
 	"HangmanWeb/game"
 	"HangmanWeb/home"
+	"HangmanWeb/rank"
 	"HangmanWeb/templates"
 	"net/http"
 )
@@ -16,6 +17,7 @@ func main() {
 
 	home.HomeRouteur()
 	game.GameRouteur()
+	rank.RankRouteur()
 	errors.ErrorRouteur()
 
 	http.ListenAndServe("localhost:8080", nil)
