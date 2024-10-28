@@ -23,7 +23,7 @@ a {
 header {
   position: fixed;
   top: 0;
-  left: 0;
+  left: 0; 
   width: 100%;
   background-color: rgba(30, 30, 30, 0.85);
   color: #fff;
@@ -101,3 +101,61 @@ input:focus {
 #user-input {
   pointer-events: auto;
 }
+
+.info-bubble {
+  position: fixed;
+  top: 50%;
+  right: 80px;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px); /* Ajoute un effet de flou */
+  -webkit-backdrop-filter: blur(10px); /* Compatibilité avec Safari */
+  color: #fff;
+  padding: 20px;
+  border-radius: 50%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: 250px;
+  height: 250px; /* Taille de la bulle */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.info-bubble p {
+  margin: 5px 0;
+  font-size: 1em;
+}
+
+
+/* Style pour la bulle du mot caché sur la gauche */
+.hidden-word-container {
+  position: fixed;
+  top: 40%; /* Ajuste la hauteur pour la placer correctement sur l'écran */
+  left: 20px; /* Distance du bord gauche */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px); /* Effet de flou pour le fond */
+  -webkit-backdrop-filter: blur(10px); /* Compatibilité Safari */
+  color: #333;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 220px; /* Largeur de la bulle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  transition: transform 0.3s ease;
+}
+
+.hidden-word-container:hover {
+  transform: translateX(10px); /* Légère animation lorsqu'on survole la bulle */
+}
+
+

@@ -24,14 +24,15 @@
     <p>Lose Test</p>
     {{else}}
     <form action="/game/traitement" method="post" class="game-form">
+        <div class="hidden-word-container">
+            <p>Mot caché : {{.HiddenWord}}</p>
+        </div>
         <div class="container">
-            <div class="first-child">
-                <p>Voici le mot caché : {{.HiddenWord}}</p>
-                <p>Voici les vies restantes : {{.Counter}}</p>
-            </div>
-            <div class="second-child">
+
+            <div class="info-bubble">
+                <p>Vies restantes : {{.Counter}}</p>
+                <p>Lettres utilisées : {{.LettersAlreadyFound}}</p>
                 <p>Voici les mots utilisé : {{.WordsAlreadyFound}}</p>
-                <p>Voici les lettres utilisé : {{.LettersAlreadyFound}}</p>
             </div>
             <div class="third-child">
                 <input type="text" name="user-value" id="user-value" required autofocus>
