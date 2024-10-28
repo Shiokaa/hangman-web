@@ -77,9 +77,10 @@ func (r *RecupVar) findLetterOrWord() {
 func (r *RecupVar) endGame() {
 
 	if Counter == 0 {
-		r.Lose = true
+		Lose = true
 	}
 	if strings.EqualFold(strings.TrimSpace(r.HiddenWord), strings.TrimSpace(r.Word)) {
-		r.Win = true
+		Win = true
 	}
+
 }

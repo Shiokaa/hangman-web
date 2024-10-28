@@ -31,8 +31,6 @@ func gameTraitement(w http.ResponseWriter, r *http.Request) {
 
 	data.findLetterOrWord()
 	data.endGame()
-	print(Win)
-	print(data.Win)
 
 	http.Redirect(w, r, "/game", http.StatusSeeOther)
 }
