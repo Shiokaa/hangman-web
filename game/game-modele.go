@@ -18,6 +18,12 @@ type RecupVar struct {
 	Lose                bool
 }
 
+var Counter int = 6
+var LettersAlreadyFound []string
+var WordsAlreadyFound []string
+var Win bool
+var Lose bool
+
 func (r *RecupVar) convertedWord() []rune {
 	randomWord := r.HiddenWord
 	var runeSlice []rune
@@ -32,10 +38,6 @@ func (r *RecupVar) convertedWord() []rune {
 
 	return runeSlice
 }
-
-var Counter int = 6
-var LettersAlreadyFound []string
-var WordsAlreadyFound []string
 
 func (r *RecupVar) findLetterOrWord() {
 	isFind := false
@@ -68,13 +70,16 @@ func (r *RecupVar) findLetterOrWord() {
 			Counter--
 		}
 	}
+
 }
 
 func (r *RecupVar) endGame() {
+
 	if Counter == 0 {
-		r.Lose = true
+		Lose = true
 	}
 	if strings.EqualFold(strings.TrimSpace(r.UserValue), strings.TrimSpace(r.Word)) {
-		r.Win = true
+		Win = true
 	}
+
 }
