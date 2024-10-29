@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -44,11 +43,53 @@ p {
 }
 
 /* Effets de transition */
-h1, p {
+h1,
+p {
   transition: transform 0.2s ease-in-out;
 }
 
-h1:hover, p:hover {
+h1:hover,
+p:hover {
   transform: scale(1.05); /* Légère animation de zoom au survol */
 }
 
+/* Style des boutons */
+button {
+  padding: 12px 24px; /* Espacement interne pour un meilleur aspect */
+  font-size: 1.1rem; /* Taille du texte */
+  font-weight: bold; /* Gras pour le texte */
+  color: #fff; /* Couleur du texte */
+  background-color: #4c8bf5; /* Couleur de fond initiale */
+  border: none; /* Pas de bordure par défaut */
+  border-radius: 8px; /* Coins arrondis */
+  cursor: pointer; /* Curseur en main lors du survol */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour effet 3D */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transition pour l'effet de survol */
+  width: 100%; /* Largeur de 100% pour s'adapter à son conteneur */
+  max-width: 300px; /* Largeur maximale pour le bouton */
+  margin-top: 20px; /* Espacement au-dessus du bouton */
+}
+
+/* Effet de survol pour le bouton */
+button:hover {
+  background-color: #6fc0b9; /* Couleur de fond au survol */
+  transform: translateY(-2px); /* Légère élévation */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Ombre plus marquée au survol */
+}
+
+/* Style pour le sélecteur */
+select {
+  padding: 10px; /* Espacement à l'intérieur du sélecteur */
+  font-size: 1rem; /* Taille de la police */
+  border: 1px solid #ccc; /* Bordure du sélecteur */
+  border-radius: 8px; /* Coins arrondis */
+  margin-top: 10px; /* Espacement au-dessus du sélecteur */
+  cursor: pointer; /* Curseur en main lors du survol */
+  background-color: #ffffff; /* Couleur de fond du sélecteur */
+  color: #333; /* Couleur du texte du sélecteur */
+}
+
+/* Effet de survol pour le sélecteur */
+select:hover {
+  border-color: #4caf50; /* Changer la couleur de la bordure au survol */
+}

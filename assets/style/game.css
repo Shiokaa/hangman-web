@@ -40,7 +40,7 @@ header h1 {
   font-weight: bold;
 }
 
-form {
+.game-form {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -183,17 +183,179 @@ input:focus {
 
 /* ----------------------WIN PAGE-----------------------  */
 
-button {
-  padding: 10px;
-  width: 100%; /* Le bouton prend toute la largeur du formulaire */
-  background-color: #3498db;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+
+.win {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  margin-top: 30px;
 }
 
-button:hover {
-  background-color: #2980b9;
+
+.win-text {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #38b06e; 
+  background-color: rgba(0, 0, 0, 0.25);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  animation: win-text-glow 1s ease-in-out infinite alternate;
 }
+
+@keyframes win-text-glow {
+  from {
+    text-shadow: 0 0 6px rgba(56, 176, 110, 0.3),
+      0 0 12px rgba(56, 176, 110, 0.2);
+  }
+  to {
+    text-shadow: 0 0 8px rgba(56, 176, 110, 0.4),
+      0 0 15px rgba(56, 176, 110, 0.3);
+  }
+}
+
+
+.win-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; 
+  width: 100%;
+  max-width: 300px;
+}
+
+
+.win-button button {
+  padding: 14px 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  background-color: #38b06e;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+  width: 100%;
+}
+
+.win-button button:hover {
+  background-color: #2e945c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+
+.win-button select {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  color: #333;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.win-button select:hover {
+  border-color: #bbb;
+  background-color: #f5f5f5;
+}
+
+/* ----------------------LOSE PAGE-----------------------  */
+
+/* Conteneur de victoire */
+.lose {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  margin-top: 30px;
+}
+
+
+.lose-text {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #b06e6e; 
+  background-color: rgba(0, 0, 0, 0.25); 
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  animation: lose-text-glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes lose-text-glow {
+  from {
+    text-shadow: 0 0 6px rgba(176, 110, 110, 0.3),
+      0 0 12px rgba(176, 110, 110, 0.2);
+  }
+  to {
+    text-shadow: 0 0 8px rgba(176, 110, 110, 0.4),
+      0 0 15px rgba(176, 110, 110, 0.3);
+  }
+}
+
+.lose-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; 
+  width: 100%;
+  max-width: 300px;
+}
+
+.lose-button button {
+  padding: 14px 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  background-color: #b06e6e;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+  width: 100%;
+}
+
+.lose-button button:hover {
+  background-color: #943f3f; 
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+
+.lose-button select {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  color: #333;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.lose-button select:hover {
+  border-color: #bbb;
+  background-color: #f5f5f5;
+}
+

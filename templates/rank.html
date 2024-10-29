@@ -14,6 +14,15 @@
     <h1>Voici le classement :</h1>
     <p>{{.}}</p>
 
+    <form action="/game/restart" method="post">
+        <button type="submit">Rejouez !</button>
+        <select name="change-difficulty" id="change-difficulty">
+            <option>Ne pas changer de difficulté</option>
+            <option value="Normal">Normal</option>
+            <option value="Difficile">Difficile</option>
+        </select>
+    </form>
+
 </body>
 
 </html>

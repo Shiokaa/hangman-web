@@ -10,3 +10,4 @@ document.addEventListener("click", (event) => {
 input.addEventListener("blur", () => {
   setTimeout(() => input.focus(), 0); // Re-focus immédiatement après le blur
 });
+
