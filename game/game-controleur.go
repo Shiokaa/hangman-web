@@ -11,7 +11,7 @@ import (
 func game(w http.ResponseWriter, r *http.Request) {
 
 	if home.Pseudo == "" {
-		http.Redirect(w, r, "/erreur?code=400&message=Oups méthode incorrecte", http.StatusMovedPermanently)
+		http.Redirect(w, r, "/erreur?code=400&message=Oups méthode incorrecte", http.StatusSeeOther)
 		return
 	}
 
@@ -23,7 +23,7 @@ func game(w http.ResponseWriter, r *http.Request) {
 func gameTraitement(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method != http.MethodPost {
-		http.Redirect(w, r, "/erreur?code=400&message=Oups méthode incorrecte", http.StatusMovedPermanently)
+		http.Redirect(w, r, "/erreur?code=400&message=Oups méthode incorrecte", http.StatusSeeOther)
 		return
 	}
 
@@ -31,6 +31,23 @@ func gameTraitement(w http.ResponseWriter, r *http.Request) {
 
 	data.findLetterOrWord()
 	data.endGame()
+
+	http.Redirect(w, r, "/game", http.StatusSeeOther)
+}
+
+func gameRestart(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Redirect(w, r, "/erreur?code=400&message=Oups méthode incorrecte", http.StatusSeeOther)
+		return
+	}
+
+	Counter = 6
+	Win = false
+	Lose = false
+	random.Word = random.RandomWord()
+	home.HiddenWord = string(home.CreateSlice(home.Difficulty))
+	LettersAlreadyFound = []string{}
+	WordsAlreadyFound = []string{}
 
 	http.Redirect(w, r, "/game", http.StatusSeeOther)
 }

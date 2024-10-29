@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-var Word = randomWord()
+var Word = RandomWord()
 
 func words() string {
 	data, err := os.ReadFile("./random/words.txt")
@@ -19,7 +19,7 @@ func words() string {
 	return string(data)
 }
 
-func randomWord() string {
+func RandomWord() string {
 	n := rand.IntN(313)
 	word := ""
 	str := strings.Split(words(), "\n")
