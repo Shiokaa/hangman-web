@@ -13,7 +13,7 @@ func main() {
 	fileServer := http.FileServer(http.Dir("./assets/"))
 	http.Handle("/static/", http.StripPrefix("/static/", fileServer))
 
-	templates.Parse()
+	templates.InitTemplates()
 
 	home.HomeRouteur()
 	game.GameRouteur()
