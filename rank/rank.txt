@@ -1,13 +1,8 @@
-<<<<<<< HEAD
-Joueur : Tomy Difficulte : normal
-Joueur : Tomy Difficulte : normal
-Joueur : Tomy Difficulte : normal
-Joueur : Tomy Difficulte : normal
-Joueur : Tomy Difficulte : normal
-Joueur : Tomy Difficulte : normal
-Joueur : rty Difficulte : normal
-Joueur : ghj Difficulte : normal
-Joueur : ert Difficulte : normal
-=======
-Joueur : Tom   Difficulté : normal
->>>>>>> 8c76aa1980626f6e39a0e46f21785f1010f6c402
+Joueur : Claude,    Difficulté : difficile
+Joueur : Claude,    Difficulté : difficile
+Joueur : Claude,    Difficulté : difficile
+Joueur : Claude,    Difficulté : difficile
+Joueur : Claude,    Difficulté : difficile
+Joueur : Claude,    Difficulté : difficile
+Joueur : Claude,    Difficulté : difficile
+Joueur : jeanne,    Difficulté : normal
