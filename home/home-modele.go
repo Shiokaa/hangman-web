@@ -19,7 +19,7 @@ func (h *Home) isValidNickname() bool {
 }
 
 func (h *Home) isValidDifficulty() bool {
-	if h.FormDifficulty == "normal" || h.FormDifficulty == "difficile" {
+	if h.FormDifficulty == "Normal" || h.FormDifficulty == "Difficile" {
 		return true
 	}
 	return false
@@ -34,7 +34,7 @@ func CreateSlice(difficulty string) []rune {
 		x = rand.IntN(len(random.Word) - 1)
 	}
 
-	if difficulty == "difficile" {
+	if difficulty == "Difficile" {
 		for i, char := range random.Word {
 			if i == len(random.Word)-1 {
 				break
@@ -47,7 +47,7 @@ func CreateSlice(difficulty string) []rune {
 		}
 	}
 
-	if difficulty == "normal" {
+	if difficulty == "Normal" {
 		for i, char := range random.Word {
 			if i == len(random.Word)-1 {
 				break

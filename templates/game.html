@@ -25,6 +25,11 @@
     <div class="win-button">
         <form action="/game/restart" method="post">
             <button type="submit">Rejouez !</button>
+            <select name="change-difficulty" id="change-difficulty">
+                <option>Changez de difficulté</option>
+                <option value="Normal">Normal</option>
+                <option value="Difficile">Difficile</option>
+            </select>
         </form>
         <form action="/rank" method="post">
             <button type="submit">Aller voir le classement !</button>
@@ -47,7 +52,7 @@
                 <p>Voici les mots utilisés : {{.WordsAlreadyFound}}</p>
             </div>
             <div class="third-child">
-                <input type="text" name="user-value" id="user-value" required autofocus>
+                <input type="text" name="user-value" id="user-value" required autofocus autocomplete="off">
             </div>
         </div>
     </form>
