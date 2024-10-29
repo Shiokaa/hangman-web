@@ -19,9 +19,21 @@
     </header>
 
     {{if .Win}}
-    <p>Win Test</p>
+    <div class="win-text">
+        <p>Bien joué ! Vous avez trouvé le mot : {{.Word}}</p>
+    </div>
+    <div class="win-button">
+        <form action="/game/restart" method="post">
+            <button type="submit">Rejouez !</button>
+        </form>
+        <form action="/rank" method="post">
+            <button type="submit">Aller voir le classement !</button>
+        </form>
+    </div>
+
     {{else if .Lose}}
     <p>Lose Test</p>
+
     {{else}}
     <form action="/game/traitement" method="post" class="game-form">
         <div class="hidden-word-container">
@@ -32,7 +44,7 @@
             <div class="info-bubble">
                 <p>Vies restantes : {{.Counter}}</p>
                 <p>Lettres utilisées : {{.LettersAlreadyFound}}</p>
-                <p>Voici les mots utilisé : {{.WordsAlreadyFound}}</p>
+                <p>Voici les mots utilisés : {{.WordsAlreadyFound}}</p>
             </div>
             <div class="third-child">
                 <input type="text" name="user-value" id="user-value" required autofocus>
@@ -40,15 +52,16 @@
         </div>
     </form>
     {{end}}
+
     <style>
         body {
             background: no-repeat url("/static/img/Fond-n{{.Counter}}.png");
         }
     </style>
 
-    <script src="/static/script/game.js"></script>
-
 </body>
+
+<script src="/static/script/game.js"></script>
 
 </html>
 {{end}}

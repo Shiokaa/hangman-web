@@ -84,3 +84,4 @@ func (r *RecupVar) endGame() {
 	}
 
 }
+

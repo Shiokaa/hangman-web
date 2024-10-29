@@ -24,6 +24,9 @@
                 <option value="normal">Normal</option>
                 <option value="difficile">Difficile</option>
             </select>
+            {{if .CheckDifficulty}}
+            <p class="check-difficulty">Choisissez une difficulté</p>
+            {{end}}
 
             <button type="submit">Commencer</button>
         </form>

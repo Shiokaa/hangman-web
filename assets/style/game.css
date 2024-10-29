@@ -14,16 +14,10 @@ body {
   color: #333;
 }
 
-body,
-button,
-a {
-  pointer-events: none;
-}
-
 header {
   position: fixed;
   top: 0;
-  left: 0; 
+  left: 0;
   width: 100%;
   background-color: rgba(30, 30, 30, 0.85);
   color: #fff;
@@ -129,7 +123,6 @@ input:focus {
   font-size: 1em;
 }
 
-
 /* Style pour la bulle du mot caché sur la gauche */
 .hidden-word-container {
   position: fixed;
@@ -158,7 +151,6 @@ input:focus {
   transform: translateX(10px); /* Légère animation lorsqu'on survole la bulle */
 }
 
-
 /* Style pour l'input de l'utilisateur pour qu'il soit plus imposant */
 .third-child {
   width: 100%;
@@ -186,4 +178,21 @@ input:focus {
   outline: none;
   border-color: #333; /* Change la couleur de la bordure en mode focus */
   transform: scale(1.05); /* Agrandit légèrement l'input au focus */
+}
+
+/* ----------------------WIN PAGE-----------------------  */
+
+button {
+  padding: 10px;
+  width: 100%; /* Le bouton prend toute la largeur du formulaire */
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2980b9;
 }

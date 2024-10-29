@@ -7,9 +7,10 @@ import (
 )
 
 type Home struct {
-	FormDifficulty string
-	Pseudo         string
-	CheckPseudo    bool
+	FormDifficulty  string
+	Pseudo          string
+	CheckPseudo     bool
+	CheckDifficulty bool
 }
 
 func (h *Home) isValidNickname() bool {
@@ -24,7 +25,7 @@ func (h *Home) isValidDifficulty() bool {
 	return false
 }
 
-func (h *Home) CreateSlice() []rune {
+func CreateSlice(difficulty string) []rune {
 	var runeSlice []rune
 	n := rand.IntN(len(random.Word) - 1)
 	x := rand.IntN(len(random.Word) - 1)
@@ -33,7 +34,7 @@ func (h *Home) CreateSlice() []rune {
 		x = rand.IntN(len(random.Word) - 1)
 	}
 
-	if h.FormDifficulty == "difficile" {
+	if difficulty == "difficile" {
 		for i, char := range random.Word {
 			if i == len(random.Word)-1 {
 				break
@@ -46,7 +47,7 @@ func (h *Home) CreateSlice() []rune {
 		}
 	}
 
-	if h.FormDifficulty == "normal" {
+	if difficulty == "normal" {
 		for i, char := range random.Word {
 			if i == len(random.Word)-1 {
 				break
