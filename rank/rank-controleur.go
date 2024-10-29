@@ -8,8 +8,8 @@ import (
 )
 
 func rank(w http.ResponseWriter, r *http.Request) {
-	file, err := os.ReadFile()
-	os.WriteFile("./rank/rank.txt", []byte("Joueur : "+home.Pseudo+" Difficulté : "+home.Difficulty), 0666)
+	file, _ := os.ReadFile("./rank/rank.txt")
+	os.WriteFile("./rank/rank.txt", []byte(string(file)+"Joueur : "+home.Pseudo+" Difficulté : "+home.Difficulty+"\n"), 0666)
 
 	templates.Templates.ExecuteTemplate(w, "rank", nil)
 }
