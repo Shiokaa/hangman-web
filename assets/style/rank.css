@@ -1,5 +1,54 @@
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
+
+/* Style de l’arrière-plan */
+body {
+  background: linear-gradient(135deg, #4c8bf5, #6fc0b9);
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  color: #ffffff;
+}
+
+/* Style pour le titre */
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #fff;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.2);
+  padding: 15px 30px;
+  border-radius: 8px;
+}
+
+/* Style pour le texte du classement */
+p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px); /* Effet de flou */
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Effets de transition */
+h1, p {
+  transition: transform 0.2s ease-in-out;
+}
+
+h1:hover, p:hover {
+  transform: scale(1.05); /* Légère animation de zoom au survol */
+}
+

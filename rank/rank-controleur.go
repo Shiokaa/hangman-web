@@ -18,7 +18,7 @@ func rank(w http.ResponseWriter, r *http.Request) {
 
 	file, _ := os.ReadFile("./rank/rank.txt")
 
-	os.WriteFile("./rank/rank.txt", []byte(string(file)+"Joueur : "+home.Pseudo+"   Difficulté : "+home.Difficulty+"\n"), 0666)
+	os.WriteFile("./rank/rank.txt", []byte(string(file)+"Joueur : "+home.Pseudo+",    Difficulté : "+home.Difficulty+"\n"), 0666)
 
 	rank, _ := os.ReadFile("./rank/rank.txt")
 
