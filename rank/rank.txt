@@ -6,3 +6,4 @@ Joueur : Claude,    Difficulté : difficile
 Joueur : Claude,    Difficulté : difficile
 Joueur : Claude,    Difficulté : difficile
 Joueur : jeanne,    Difficulté : normal
+Joueur : Tom,    Difficulté : Normal
