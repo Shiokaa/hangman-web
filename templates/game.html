@@ -19,25 +19,43 @@
     </header>
 
     {{if .Win}}
-    <div class="win-text">
-        <p>Bien joué ! Vous avez trouvé le mot : {{.Word}}</p>
+    <div class="win">
+        <div class="win-text">
+            <p>Bien joué ! Vous avez trouvé le mot : {{.Word}}</p>
+        </div>
+        <div class="win-button">
+            <form action="/game/restart" method="post">
+                <button type="submit">Rejouez !</button>
+                <select name="change-difficulty" id="change-difficulty">
+                    <option>Ne pas changer de difficulté</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Difficile">Difficile</option>
+                </select>
+            </form>
+            <form action="/rank" method="post">
+                <button type="submit">Aller voir le classement !</button>
+            </form>
+        </div>
     </div>
-    <div class="win-button">
-        <form action="/game/restart" method="post">
-            <button type="submit">Rejouez !</button>
-            <select name="change-difficulty" id="change-difficulty">
-                <option>Changez de difficulté</option>
-                <option value="Normal">Normal</option>
-                <option value="Difficile">Difficile</option>
-            </select>
-        </form>
-        <form action="/rank" method="post">
-            <button type="submit">Aller voir le classement !</button>
-        </form>
-    </div>
-
     {{else if .Lose}}
-    <p>Lose Test</p>
+    <div class="lose">
+        <div class="lose-text">
+            <p>Vous avez perdu ! Le mot était : {{.Word}}</p>
+        </div>
+        <div class="lose-button">
+            <form action="/game/restart" method="post">
+                <button type="submit">Rejouez !</button>
+                <select name="change-difficulty" id="change-difficulty">
+                    <option>Ne pas changer de difficulté</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Difficile">Difficile</option>
+                </select>
+            </form>
+            <form action="/rank" method="post">
+                <button type="submit">Aller voir le classement !</button>
+            </form>
+        </div>
+    </div>
 
     {{else}}
     <form action="/game/traitement" method="post" class="game-form">

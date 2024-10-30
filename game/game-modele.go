@@ -23,6 +23,7 @@ var LettersAlreadyFound []string
 var WordsAlreadyFound []string
 var Win bool
 var Lose bool
+var AsWon bool
 
 func (r *RecupVar) convertedWord() []rune {
 	randomWord := r.HiddenWord
@@ -81,7 +82,7 @@ func (r *RecupVar) endGame() {
 	}
 	if strings.EqualFold(strings.TrimSpace(r.HiddenWord), strings.TrimSpace(r.Word)) {
 		Win = true
+		AsWon = true
 	}
 
 }
-

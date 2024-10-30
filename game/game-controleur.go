@@ -41,7 +41,12 @@ func gameRestart(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	home.Difficulty = r.FormValue("change-difficulty")
+	recupDifficulty := r.FormValue("change-difficulty")
+
+	if recupDifficulty != "Ne pas changer de difficulté" {
+		home.Difficulty = recupDifficulty
+	}
+
 	Counter = 6
 	Win = false
 	Lose = false
@@ -49,11 +54,7 @@ func gameRestart(w http.ResponseWriter, r *http.Request) {
 	home.HiddenWord = string(home.CreateSlice(home.Difficulty))
 	LettersAlreadyFound = []string{}
 	WordsAlreadyFound = []string{}
-
-	if home.Difficulty != "Difficile" && home.Difficulty != "Normal" {
-		http.Redirect(w, r, "/game?message=Difficulté invalide", http.StatusSeeOther)
-		return
-	}
+	AsWon = false
 
 	http.Redirect(w, r, "/game", http.StatusSeeOther)
 }
