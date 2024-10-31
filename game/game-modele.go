@@ -16,6 +16,7 @@ type RecupVar struct {
 	WordsAlreadyFound   string
 	Win                 bool
 	Lose                bool
+	Score               int
 }
 
 var Counter int = 6
@@ -24,6 +25,7 @@ var WordsAlreadyFound []string
 var Win bool
 var Lose bool
 var AsWon bool
+var Score int
 
 func (r *RecupVar) convertedWord() []rune {
 	randomWord := r.HiddenWord
@@ -83,6 +85,7 @@ func (r *RecupVar) endGame() {
 	if strings.EqualFold(strings.TrimSpace(r.HiddenWord), strings.TrimSpace(r.Word)) {
 		Win = true
 		AsWon = true
+		Score += Counter
 	}
 
 }
