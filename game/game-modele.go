@@ -26,6 +26,7 @@ var Win bool
 var Lose bool
 var AsWon bool
 var Score int
+var BonusUsed bool = false
 
 func (r *RecupVar) convertedWord() []rune {
 	randomWord := r.HiddenWord
@@ -78,7 +79,6 @@ func (r *RecupVar) findLetterOrWord() {
 }
 
 func (r *RecupVar) endGame() {
-
 	if Counter == 0 {
 		Lose = true
 	}
@@ -87,5 +87,23 @@ func (r *RecupVar) endGame() {
 		AsWon = true
 		Score += Counter
 	}
+}
 
+func (r *RecupVar) useBonus() {
+	if BonusUsed {
+		return
+	}
+	BonusUsed = true // Marque le bonus comme utilisé
+
+	hiddenWord := r.convertedWord()
+	for i, char := range r.Word {
+		if hiddenWord[i] == '_' { // Choisit la première lettre non révélée
+			hiddenWord[i] = char
+			break
+		}
+	}
+
+	// Met à jour le mot caché
+	r.HiddenWord = string(hiddenWord)
+	home.HiddenWord = r.HiddenWord
 }
