@@ -29,13 +29,15 @@ func rank(w http.ResponseWriter, r *http.Request) {
 
 		for i, elem := range lines {
 			if strings.Contains(elem, home.Pseudo) && strings.Contains(elem, home.Difficulty) {
-				parts := strings.Split(elem, ",")
-				fileScoreStr := strings.TrimSpace(parts[len(parts)-1][7:])
+
+				parts := strings.Split(elem, ":")
+				fileScoreStr := strings.TrimSpace(parts[3])
 				fileScore, _ := strconv.Atoi(fileScoreStr)
 
 				if game.Score > fileScore {
 					lines[i] = "Joueur : " + home.Pseudo + ",    Difficulté : " + home.Difficulty + ",    Score : " + score
 				}
+
 				isChanged = true
 				break
 			}

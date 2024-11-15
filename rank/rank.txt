@@ -1,1 +1,0 @@
-Joueur : Tom,    Difficulté : Normal,    Score : 12
