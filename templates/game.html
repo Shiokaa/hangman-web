@@ -35,14 +35,9 @@
             <form action="/rank" method="post">
                 <button type="submit">Aller voir le classement !</button>
             </form>
-
-
-            <form action="/game/useBonus" method="post" class="bonus-form">
-                <button type="submit" id="bonus-button">Utiliser le Bonus (révéler une lettre)</button>
+            <form action="/game/changeNickName" method="post">
+                <button type="submit">Changer de pseudo</button>
             </form>
-
-            
-            
         </div>
     </div>
     {{else if .Lose}}
@@ -62,10 +57,14 @@
             <form action="/rank" method="post">
                 <button type="submit">Aller voir le classement !</button>
             </form>
+            <form action="/game/changeNickName" method="post">
+                <button type="submit">Changer de pseudo</button>
+            </form>
         </div>
     </div>
 
     {{else}}
+
     <form action="/game/traitement" method="post" class="game-form">
         <div class="hidden-word-container">
             <p>Mot caché : {{.HiddenWord}}</p>
@@ -78,11 +77,19 @@
                 <p>Voici les mots utilisés : {{.WordsAlreadyFound}}</p>
             </div>
             <div class="third-child">
-                <input type="text" name="user-value" id="user-value" required autofocus autocomplete="off">
+                <input type="text" name="user-value" id="user-value" autofocus autocomplete="off">
             </div>
         </div>
     </form>
+    {{if .BonusUsed}}
+    <form action="/game/bonus" method="post" class="bonus-form" name="bonus">
+        <button type="submit" id="bonus-button" name="bonus">Révéler 1 lettre ! (utilisable 1 fois et coûte 1
+            vie)</button>
+    </form>
     {{end}}
+    {{end}}
+
+
 
     <style>
         body {

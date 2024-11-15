@@ -11,8 +11,6 @@ import (
 	"strings"
 )
 
-var rankCounter int = 0
-
 func rank(w http.ResponseWriter, r *http.Request) {
 
 	var data template.HTML
@@ -31,32 +29,29 @@ func rank(w http.ResponseWriter, r *http.Request) {
 
 		for i, elem := range lines {
 			if strings.Contains(elem, home.Pseudo) && strings.Contains(elem, home.Difficulty) {
-
-				parts := strings.Split(elem, ":")
-				fileScoreStr := strings.TrimSpace(parts[3])
+				parts := strings.Split(elem, ",")
+				fileScoreStr := strings.TrimSpace(parts[len(parts)-1][7:])
 				fileScore, _ := strconv.Atoi(fileScoreStr)
 
 				if game.Score > fileScore {
 					lines[i] = "Joueur : " + home.Pseudo + ",    Difficulté : " + home.Difficulty + ",    Score : " + score
 				}
-
 				isChanged = true
 				break
 			}
 		}
 
 		if !isChanged {
-			lines = append(lines, "Joueur : "+home.Pseudo+",    Difficulté : "+home.Difficulty+",    Score : "+score)
+			newEntry := "Joueur : " + home.Pseudo + ",    Difficulté : " + home.Difficulty + ",    Score : " + score
+			if len(lines) == 1 && lines[0] == "" {
+				lines[0] = newEntry
+			} else {
+				lines = append(lines, newEntry)
+			}
 		}
 
-		if rankCounter == 0 {
-			newContent := strings.Join(lines, "")
-			os.WriteFile("./rank/rank.txt", []byte(newContent), 0666)
-			rankCounter = 1
-		} else {
-			newContent := strings.Join(lines, "\n")
-			os.WriteFile("./rank/rank.txt", []byte(newContent), 0666)
-		}
+		newContent := strings.Join(lines, "\n")
+		os.WriteFile("./rank/rank.txt", []byte(newContent), 0666)
 	}
 
 	rank, _ := os.ReadFile("./rank/rank.txt")

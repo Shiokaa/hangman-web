@@ -5,6 +5,12 @@
   font-family: "Roboto", sans-serif;
 }
 
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -183,26 +189,24 @@ input:focus {
 
 /* ----------------------WIN PAGE-----------------------  */
 
-
 .win {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 10px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   margin-top: 30px;
 }
 
-
 .win-text {
   text-align: center;
   font-size: 2rem;
   font-weight: bold;
-  color: #38b06e; 
-  background-color: rgba(0, 0, 0, 0.25);
+  color: #65d497;
+  background-color: rgba(0, 0, 0, 0.4);
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
@@ -220,16 +224,14 @@ input:focus {
   }
 }
 
-
 .win-button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px; 
+  gap: 15px;
   width: 100%;
   max-width: 300px;
 }
-
 
 .win-button button {
   padding: 14px 25px;
@@ -240,7 +242,7 @@ input:focus {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease, transform 0.2s ease,
     box-shadow 0.2s ease;
   width: 100%;
@@ -251,7 +253,6 @@ input:focus {
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
 }
-
 
 .win-button select {
   padding: 12px;
@@ -280,19 +281,18 @@ input:focus {
   align-items: center;
   gap: 8px;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 10px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   margin-top: 30px;
 }
 
-
 .lose-text {
   text-align: center;
   font-size: 2rem;
   font-weight: bold;
-  color: #b06e6e; 
-  background-color: rgba(0, 0, 0, 0.25); 
+  color: #e38e8e;
+  background-color: rgba(0, 0, 0, 0.4);
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
@@ -314,7 +314,7 @@ input:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px; 
+  gap: 15px;
   width: 100%;
   max-width: 300px;
 }
@@ -328,18 +328,17 @@ input:focus {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease, transform 0.2s ease,
     box-shadow 0.2s ease;
   width: 100%;
 }
 
 .lose-button button:hover {
-  background-color: #943f3f; 
+  background-color: #943f3f;
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
 }
-
 
 .lose-button select {
   padding: 12px;
@@ -359,19 +358,34 @@ input:focus {
   background-color: #f5f5f5;
 }
 
+.bonus-form {
+  position: absolute;
+  bottom: 12%;
+}
 
 #bonus-button {
-  padding: 12px;
-  font-size: 1rem;
-  color: white;
-  background-color: #ff9800;
+  position: relative;
+  bottom: 100%;
+  padding: 14px 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+  background: rgba(106, 106, 106, 0.6);
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 #bonus-button:hover {
-  background-color: #e68900;
-  transform: translateY(-2px);
+  background-color: rgba(141, 46, 148, 0.9);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+#bonus-button:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(56, 176, 110, 0.6);
 }
