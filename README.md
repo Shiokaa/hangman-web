@@ -9,7 +9,7 @@ Bienvenue dans le jeu du Pendu (HangmanWeb) réalisé en Go. Ce projet implémen
 - Affichage des lettres trouvées et des lettres manquantes
 - Comptabilisation des essais ratés
 - Gestion des victoires et des défaites
-- Interface en ligne de commande
+- Interface en web
 
 ## Prérequis
 
