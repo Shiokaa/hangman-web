@@ -1,0 +1,3 @@
+Joueur : Tomy,    Difficulté : Normal,    Score : 6
+Joueur : Tomy,    Difficulté : Normal,    Score : 12
+Joueur : Tomy,    Difficulté : Normal,    Score : 18
