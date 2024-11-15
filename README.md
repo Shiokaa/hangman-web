@@ -41,7 +41,6 @@ go run .\main\main.go
 ### Une fois le jeu lancé
 
 Ouvrez votre navigateur et tapez l'adresse suivante : http://localhost:8080/home
-Ici vous trouverez l'accueil du jeu !
 
 Les règles du jeu sont les suivantes :
 
