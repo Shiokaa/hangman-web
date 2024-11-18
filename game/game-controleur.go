@@ -5,6 +5,7 @@ import (
 	"HangmanWeb/random"
 	"HangmanWeb/templates"
 	"net/http"
+	"regexp"
 	"strings"
 )
 
@@ -15,7 +16,13 @@ func game(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := RecupVar{Pseudo: home.Pseudo, Difficulty: home.Difficulty, Counter: Counter, Word: random.Word, HiddenWord: home.HiddenWord, UserValue: r.FormValue("user-value"), Win: Win, Lose: Lose, LettersAlreadyFound: strings.Join(LettersAlreadyFound, ", "), WordsAlreadyFound: strings.Join(WordsAlreadyFound, ", "), Score: Score, BonusUsed: BonusUsed}
+	data := RecupVar{CheckValue: false, Pseudo: home.Pseudo, Difficulty: home.Difficulty, Counter: Counter, Word: random.Word, HiddenWord: home.HiddenWord, UserValue: r.FormValue("user-value"), Win: Win, Lose: Lose, LettersAlreadyFound: strings.Join(LettersAlreadyFound, ", "), WordsAlreadyFound: strings.Join(WordsAlreadyFound, ", "), Score: Score, BonusUsed: BonusUsed}
+
+	message := r.FormValue("message")
+
+	if message == "Input Invalide" {
+		data.CheckValue = true
+	}
 
 	templates.Templates.ExecuteTemplate(w, "game", data)
 }
@@ -27,7 +34,14 @@ func gameTraitement(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := RecupVar{Pseudo: home.Pseudo, Difficulty: home.Difficulty, Counter: Counter, Word: random.Word, HiddenWord: home.HiddenWord, UserValue: r.FormValue("user-value"), Win: Win, Lose: Lose, LettersAlreadyFound: strings.Join(LettersAlreadyFound, ", "), WordsAlreadyFound: strings.Join(WordsAlreadyFound, ", "), Score: Score, BonusUsed: BonusUsed}
+	checkValueInput, _ := regexp.MatchString("^[a-zA-Z]{1,32}$", r.FormValue("user-value"))
+
+	if !checkValueInput {
+		http.Redirect(w, r, "/game?message=Input Invalide", http.StatusMovedPermanently)
+		return
+	}
+
+	data := RecupVar{CheckValue: false, Pseudo: home.Pseudo, Difficulty: home.Difficulty, Counter: Counter, Word: random.Word, HiddenWord: home.HiddenWord, UserValue: r.FormValue("user-value"), Win: Win, Lose: Lose, LettersAlreadyFound: strings.Join(LettersAlreadyFound, ", "), WordsAlreadyFound: strings.Join(WordsAlreadyFound, ", "), Score: Score, BonusUsed: BonusUsed}
 
 	data.findLetterOrWord()
 	data.endGame()
@@ -67,7 +81,7 @@ func gameBonus(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := RecupVar{Pseudo: home.Pseudo, Difficulty: home.Difficulty, Counter: Counter, Word: random.Word, HiddenWord: home.HiddenWord, UserValue: r.FormValue("user-value"), Win: Win, Lose: Lose, LettersAlreadyFound: strings.Join(LettersAlreadyFound, ", "), WordsAlreadyFound: strings.Join(WordsAlreadyFound, ", "), Score: Score, BonusUsed: BonusUsed}
+	data := RecupVar{CheckValue: false, Pseudo: home.Pseudo, Difficulty: home.Difficulty, Counter: Counter, Word: random.Word, HiddenWord: home.HiddenWord, UserValue: r.FormValue("user-value"), Win: Win, Lose: Lose, LettersAlreadyFound: strings.Join(LettersAlreadyFound, ", "), WordsAlreadyFound: strings.Join(WordsAlreadyFound, ", "), Score: Score, BonusUsed: BonusUsed}
 
 	data.useBonus()
 	data.endGame()

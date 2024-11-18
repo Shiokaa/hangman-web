@@ -6,6 +6,7 @@ import (
 )
 
 type RecupVar struct {
+	CheckValue          bool
 	Pseudo              string
 	Difficulty          string
 	Counter             int

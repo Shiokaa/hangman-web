@@ -389,3 +389,9 @@ input:focus {
   outline: none;
   box-shadow: 0 0 8px rgba(56, 176, 110, 0.6);
 }
+
+.error {
+  margin-left: 125px;
+  color: red;
+  font-size: 1.2rem;
+}
