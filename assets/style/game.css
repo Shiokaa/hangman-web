@@ -148,6 +148,7 @@ input:focus {
   justify-content: center;
   align-items: center;
   text-align: center;
+  flex-direction: column;
   font-size: 1.2em;
   font-weight: 600;
   font-family: "Roboto", sans-serif;
@@ -394,4 +395,12 @@ input:focus {
   margin-left: 125px;
   color: red;
   font-size: 1.2rem;
+}
+
+.isFind {
+  color: #38b06e;
+}
+
+.isNotFind {
+  color: #d83838;
 }

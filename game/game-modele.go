@@ -6,7 +6,9 @@ import (
 )
 
 type RecupVar struct {
-	CheckValue          bool
+	CheckValueInput     bool
+	LetterIsRight       bool
+	LetterIsWrong       bool
 	Pseudo              string
 	Difficulty          string
 	Counter             int
@@ -29,6 +31,8 @@ var Lose bool
 var AsWon bool
 var Score int
 var BonusUsed bool = true
+var LetterIsRight bool
+var LetterIsWrong bool
 
 func (r *RecupVar) convertedWord() []rune {
 	randomWord := r.HiddenWord
@@ -66,6 +70,8 @@ func (r *RecupVar) findLetterOrWord() {
 						hiddenWord[iHiddenWord] = charWord
 						home.HiddenWord = string(hiddenWord)
 						r.HiddenWord = string(hiddenWord)
+						LetterIsRight = true
+						LetterIsWrong = false
 						break
 					}
 				}
@@ -75,6 +81,8 @@ func (r *RecupVar) findLetterOrWord() {
 		if !isFind {
 			LettersAlreadyFound = append(LettersAlreadyFound, r.UserValue)
 			Counter--
+			LetterIsWrong = true
+			LetterIsRight = false
 		}
 	}
 

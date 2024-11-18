@@ -68,6 +68,12 @@
     <form action="/game/traitement" method="post" class="game-form">
         <div class="hidden-word-container">
             <p>Mot caché : {{.HiddenWord}}</p>
+            {{if .LetterIsRight}}
+            <p class="isFind">Trouvé ! </p>
+            {{end}}
+            {{if .LetterIsWrong}}
+            <p class="isNotFind">Raté ! </p>
+            {{end}}
         </div>
         <div class="container">
 
@@ -83,7 +89,7 @@
     </form>
     {{if .BonusUsed}}
     <form action="/game/bonus" method="post" class="bonus-form" name="bonus">
-        {{if .CheckValue}}
+        {{if .CheckValueInput}}
         <p class="error">Erreur lors de la saisie</p>
         {{end}}
         <button type="submit" id="bonus-button" name="bonus">Révéler 1 lettre ! (utilisable 1 fois et coûte 1

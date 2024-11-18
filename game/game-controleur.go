@@ -16,12 +16,12 @@ func game(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := RecupVar{CheckValue: false, Pseudo: home.Pseudo, Difficulty: home.Difficulty, Counter: Counter, Word: random.Word, HiddenWord: home.HiddenWord, UserValue: r.FormValue("user-value"), Win: Win, Lose: Lose, LettersAlreadyFound: strings.Join(LettersAlreadyFound, ", "), WordsAlreadyFound: strings.Join(WordsAlreadyFound, ", "), Score: Score, BonusUsed: BonusUsed}
+	data := RecupVar{CheckValueInput: false, LetterIsRight: LetterIsRight, LetterIsWrong: LetterIsWrong, Pseudo: home.Pseudo, Difficulty: home.Difficulty, Counter: Counter, Word: random.Word, HiddenWord: home.HiddenWord, UserValue: r.FormValue("user-value"), Win: Win, Lose: Lose, LettersAlreadyFound: strings.Join(LettersAlreadyFound, ", "), WordsAlreadyFound: strings.Join(WordsAlreadyFound, ", "), Score: Score, BonusUsed: BonusUsed}
 
 	message := r.FormValue("message")
 
 	if message == "Input Invalide" {
-		data.CheckValue = true
+		data.CheckValueInput = true
 	}
 
 	templates.Templates.ExecuteTemplate(w, "game", data)
@@ -41,7 +41,7 @@ func gameTraitement(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := RecupVar{CheckValue: false, Pseudo: home.Pseudo, Difficulty: home.Difficulty, Counter: Counter, Word: random.Word, HiddenWord: home.HiddenWord, UserValue: r.FormValue("user-value"), Win: Win, Lose: Lose, LettersAlreadyFound: strings.Join(LettersAlreadyFound, ", "), WordsAlreadyFound: strings.Join(WordsAlreadyFound, ", "), Score: Score, BonusUsed: BonusUsed}
+	data := RecupVar{CheckValueInput: false, LetterIsRight: LetterIsRight, LetterIsWrong: LetterIsWrong, Pseudo: home.Pseudo, Difficulty: home.Difficulty, Counter: Counter, Word: random.Word, HiddenWord: home.HiddenWord, UserValue: r.FormValue("user-value"), Win: Win, Lose: Lose, LettersAlreadyFound: strings.Join(LettersAlreadyFound, ", "), WordsAlreadyFound: strings.Join(WordsAlreadyFound, ", "), Score: Score, BonusUsed: BonusUsed}
 
 	data.findLetterOrWord()
 	data.endGame()
@@ -70,6 +70,8 @@ func gameRestart(w http.ResponseWriter, r *http.Request) {
 	WordsAlreadyFound = []string{}
 	AsWon = false
 	BonusUsed = true
+	LetterIsRight = false
+	LetterIsWrong = false
 
 	http.Redirect(w, r, "/game", http.StatusSeeOther)
 }
@@ -81,7 +83,7 @@ func gameBonus(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := RecupVar{CheckValue: false, Pseudo: home.Pseudo, Difficulty: home.Difficulty, Counter: Counter, Word: random.Word, HiddenWord: home.HiddenWord, UserValue: r.FormValue("user-value"), Win: Win, Lose: Lose, LettersAlreadyFound: strings.Join(LettersAlreadyFound, ", "), WordsAlreadyFound: strings.Join(WordsAlreadyFound, ", "), Score: Score, BonusUsed: BonusUsed}
+	data := RecupVar{CheckValueInput: false, LetterIsRight: LetterIsRight, LetterIsWrong: LetterIsWrong, Pseudo: home.Pseudo, Difficulty: home.Difficulty, Counter: Counter, Word: random.Word, HiddenWord: home.HiddenWord, UserValue: r.FormValue("user-value"), Win: Win, Lose: Lose, LettersAlreadyFound: strings.Join(LettersAlreadyFound, ", "), WordsAlreadyFound: strings.Join(WordsAlreadyFound, ", "), Score: Score, BonusUsed: BonusUsed}
 
 	data.useBonus()
 	data.endGame()
@@ -106,6 +108,8 @@ func gameChangeNickName(w http.ResponseWriter, r *http.Request) {
 	AsWon = false
 	BonusUsed = true
 	Score = 0
+	LetterIsRight = false
+	LetterIsWrong = false
 
 	http.Redirect(w, r, "/home", http.StatusSeeOther)
 
